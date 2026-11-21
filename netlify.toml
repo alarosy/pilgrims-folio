@@ -1,0 +1,16 @@
+# Netlify (an alternative to GitHub Pages). Connect the GitHub repository in
+# Netlify and it reads everything below; nothing to fill in by hand.
+# The site's 404 page is build/client/404.html, which Netlify finds by itself.
+
+[build]
+  command = "npm run build"
+  publish = "build/client"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# Files in /assets have a fingerprint in their name, so browsers may keep them for a year.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

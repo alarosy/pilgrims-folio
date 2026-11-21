@@ -1,0 +1,5 @@
+# Store every text file with Unix line endings, whichever computer or editor
+# saved it (Windows, GitHub's web editor, the Linux machine that builds the site).
+* text=auto eol=lf
+*.woff2 binary
+*.png binary
