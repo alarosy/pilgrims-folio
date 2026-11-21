@@ -1,0 +1,68 @@
+# Publishes the site on GitHub Pages every time something changes on the main
+# branch, for example after you save program.ts on github.com.
+#
+# One-time setup: on GitHub, open the repository → Settings → Pages →
+# "Build and deployment" → Source: GitHub Actions.
+#
+# If program.ts breaks one of its rules, the "Build" step stops with a plain
+# message (open the Actions tab to read it) and the site that is already
+# online stays as it was.
+
+name: Publish the site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # also adds a "Run workflow" button in the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One publish at a time; a newer save waits for the one before it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      # Tells the build where GitHub will serve the site: at the root for a
+      # <name>.github.io repository or a custom domain, otherwise in a folder
+      # named after the repository (https://<name>.github.io/<repository>/).
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Build (checks program.ts first)
+        run: npm run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: build/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
