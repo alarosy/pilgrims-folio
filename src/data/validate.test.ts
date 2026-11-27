@@ -91,7 +91,7 @@ describe("the build stops on a wrong number", () => {
 
   it("only warns when session hours and hoursDone disagree", () => {
     const p = copy();
-    Object.assign(mod(p, "m0"), { sessions: [session({ hours: 2 })], hoursDone: 3 });
+    Object.assign(mod(p, "m1"), { sessions: [session({ hours: 2, module: "m1" })], hoursDone: 3 });
     const { errors, warnings } = check(p);
     expect(errors).toEqual([]);
     expect(warnings.join(" ")).toMatch(/sessions add up to 2 hours, but hoursDone says 3/);

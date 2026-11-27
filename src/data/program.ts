@@ -23,7 +23,7 @@ export const program: Program = {
     claudeProjectUrl: "https://claude.ai/projects",
     startDate: "2026-11-21",
     endDate: "2026-12-31",
-    updated: "2026-11-21",
+    updated: "2026-11-27",
   },
 
   // ─────────────────────────────── WEEKS ──────────────────────────────────
@@ -47,8 +47,8 @@ export const program: Program = {
       title: "Foundations: how to read difficult English",
       titleAr: "الأسس: كيف تقرأ الإنجليزية الصعبة",
       hours: 10,
-      hoursDone: 3,
-      status: "current",
+      hoursDone: 10,
+      status: "done",
       objectives: [
         "Read a hard text without panic",
         "Guess meaning from context",
@@ -67,6 +67,26 @@ export const program: Program = {
       ],
       sessions: [
         // ↓ NEW SESSIONS GO HERE
+        {
+          id: "m0-2026-11-25-2",
+          date: "2026-11-25",
+          module: "m0",
+          hours: 6.5,
+          title: "Own study: memorizing and revising Sonnet 18",
+          summary:
+            "Ali’s own memorization and revision of Sonnet 18 between the sessions with Claude, until he knew all 14 lines (25 Nov). The exact hours were not logged; 6.5 is Ali’s estimate, which brings M0 to 10 hours.",
+          newWords: [],
+        },
+        {
+          id: "m0-2026-11-25",
+          date: "2026-11-25",
+          module: "m0",
+          hours: 0.5,
+          title: "Sonnet 18 exam (voice session)",
+          summary:
+            "An oral exam on Sonnet 18 in a voice session with Claude. About 10 lines recited from memory; score ≈ 4.5/5. After the exam Ali chose to move on to the next module.",
+          newWords: [],
+        },
         {
           id: "m0-s2",
           date: "2026-11-21",
@@ -233,7 +253,7 @@ export const program: Program = {
       titleAr: "عالم شكسبير",
       hours: 8,
       hoursDone: 0,
-      status: "locked",
+      status: "current",
       objectives: [],
       concepts: [],
       sessions: [
@@ -411,6 +431,7 @@ export const program: Program = {
       { date: "2026-11-21", title: "Comprehension, lines 5–8", result: "≈ 1.75/2", notes: "misread “every fair from fair”" },
       { date: "2026-11-21", title: "Inversion exercise", result: "2.5/3", notes: "left a fronted object in place" },
       { date: "2026-11-21", title: "Ellipsis exercise", result: "1/3", notes: "missed the hidden “than a summer’s day”; rise/fall antithesis" },
+      { date: "2026-11-25", title: "Sonnet 18 exam (voice)", result: "≈ 4.5/5", notes: "about 10 lines recited from memory" },
     ],
     weaknesses: [
       "Third-person -s, and its mirror (things doesn't → don't)",
@@ -421,7 +442,7 @@ export const program: Program = {
       "Arabic calques (compare between, in one point)",
     ],
     nextObjective:
-      "M0 · Session 3: recite Sonnet 18 lines 1–8 → lines 9–14 in three steps → the turn (“But thy eternal summer…”) → word families and roots",
+      "M1 · Shakespeare’s world: begin the module (M0 done, 10 of 10 hours)",
   },
 
   // ─────────────────────────────── THE FINAL FOLIO ────────────────────────
@@ -542,7 +563,7 @@ export const program: Program = {
       title: "Sonnet 18",
       kind: "sonnet",
       source: "Folger Shakespeare · Sonnet 18",
-      memorizedLines: 0,
+      memorizedLines: 10,
       lines: [
         "Shall I compare thee to a summer’s day?",
         "Thou art more lovely and more temperate.",
